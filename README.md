@@ -8,6 +8,15 @@
 - **Xcode 16+** — соответствует baseline (Swift 6, iOS 17+).
 - **SwiftLint** *(опционально)* — для применения `.swiftlint.yml`. Установка: `brew install swiftlint`.
 
+## Stack baseline
+
+- iOS 17+
+- Swift 6
+- `@Observable` (вместо `ObservableObject` + `@Published`)
+- `NavigationStack` (вместо `NavigationView`)
+- SwiftData (`@Model`, `@Query`, `ModelContainer`)
+- Swift Concurrency (`async/await`, `actor`, `@MainActor`)
+
 ## Что внутри
 
 ```
