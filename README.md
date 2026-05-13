@@ -2,6 +2,12 @@
 
 Стартовый набор `.cursor/rules/` для новых SwiftUI-проектов. Содержит минимум — только то, что **специфично для проекта** и не дублирует мои глобальные User Rules в Cursor.
 
+## Requirements
+
+- **Cursor** — для использования включённых `.cursor/rules/`.
+- **Xcode 16+** — соответствует baseline (Swift 6, iOS 17+).
+- **SwiftLint** *(опционально)* — для применения `.swiftlint.yml`. Установка: `brew install swiftlint`.
+
 ## Что внутри
 
 ```
@@ -73,3 +79,7 @@ rg "AI-Generated, needs human review" --type swift
 - [GitHub: yandex/migration-toolkit-for-swift](https://github.com/yandex/migration-toolkit-for-swift)
 
 Их toolkit сфокусирован на миграции ObjC → Swift; здесь — облегчённый аналог для greenfield SwiftUI-проектов.
+
+## License
+
+MIT — см. [LICENSE](LICENSE).
