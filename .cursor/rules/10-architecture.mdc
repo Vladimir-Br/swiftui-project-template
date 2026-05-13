@@ -1,0 +1,47 @@
+---
+description: Architecture decisions for this specific project
+globs: **/*View.swift,**/*ViewModel.swift,**/*Service.swift,**/*Repository.swift
+alwaysApply: false
+---
+
+# Architecture (per-project decisions)
+
+> TODO: fill in BEFORE starting the project. Delete sections that don't apply.
+
+## Pattern of choice
+<!-- choose ONE -->
+- [ ] **MV (Model-View)** — `@Observable` model used directly in views. No ViewModel layer.
+- [ ] **IVO (Input-View-Output)** — `@Observable` ViewModel with `enum Input` + `trigger(_:)`.
+
+## Folder layout
+```
+Sources/
+  App/                  # App entry + DI composition root
+  Features/
+    <FeatureName>/
+      Views/            # SwiftUI views
+      ViewModels/       # @Observable view models (if IVO/MVVM)
+      Models/           # Domain models / SwiftData @Model entities
+  Services/             # actors: network, persistence, analytics
+  DesignSystem/         # Colors, Typography, reusable Views
+  Resources/            # Assets, Localizable.xcstrings
+```
+
+## Dependency injection
+- Use **constructor injection** for services. No singletons unless justified.
+- Pass dependencies down through view initializers or `@Environment`.
+
+## Naming
+- Views: `<Feature>View`, subviews: `<Feature><Part>View`.
+- ViewModels: `<Feature>ViewModel`.
+- Services: `<Domain>Service` (typically an `actor`).
+- Errors: nested `enum Error: LocalizedError` inside the owning type.
+
+## Protocols — only when there is a real need
+Do NOT introduce a `<Domain>ServiceProtocol` by default. Add a protocol only when there is a concrete reason:
+- a mock implementation is needed for unit tests,
+- a preview-only fake is needed for SwiftUI previews,
+- there are (or will soon be) multiple real implementations,
+- the service is exposed across module boundaries that require abstraction.
+
+Otherwise — keep the concrete type. Less code, easier to read, easier to refactor later.

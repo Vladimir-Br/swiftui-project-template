@@ -1,0 +1,30 @@
+---
+description: Backend API contract for this project
+globs: **/*Service.swift,**/*Repository.swift,**/Network/**/*.swift
+alwaysApply: false
+---
+
+> If this project has no backend / no network calls, **delete this file**. It will not auto-activate (globs target networking files), but keeping an unused rule file adds noise.
+
+# API contract
+
+> TODO: fill in before writing any networking code.
+
+## Base
+- **Base URL:** `https://example.com/api/v1`  <!-- TODO -->
+- **Auth:** `Authorization: Bearer <token>` / `X-Practicum-Mobile-Token: <token>` <!-- TODO: pick one -->
+- **Encoding:** JSON, `application/json`
+- **Date format:** ISO8601 (use `JSONDecoder.DateDecodingStrategy.iso8601`)
+
+## Networking baseline
+- Use `URLSession.shared.data(for:)` with `async/await`.
+- Wrap networking in an `actor NetworkClient`.
+- Errors: define `enum NetworkError: LocalizedError` (noConnection, decoding, http(Int), unauthorized, unknown).
+- ALWAYS handle: no internet, server error, decoding error.
+- Show user-facing errors via dedicated state in ViewModel — NEVER show raw `Error.localizedDescription` in production.
+
+## Endpoints
+<!-- TODO: list main endpoints here so agent knows the surface -->
+| Method | Path | Purpose |
+| ------ | ---- | ------- |
+| GET    | /... | ...     |

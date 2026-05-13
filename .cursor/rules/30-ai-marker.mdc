@@ -1,0 +1,36 @@
+---
+description: Convention for marking AI-generated code for later human review
+alwaysApply: true
+---
+
+# AI-generated code marker
+
+When you (the AI assistant) **create a brand-new Swift file from scratch** or **substantially rewrite the body of a view / view model / service**, prepend this header right after the file copyright/import block:
+
+```swift
+// MARK: - AI-Generated, needs human review
+//
+// Created by Cursor on YYYY-MM-DD
+// Reason: <short reason — "initial implementation", "refactor to IVO", etc.>
+//
+// TODO: review carefully, then remove this header.
+```
+
+## When to add the marker (by action, not by percentage)
+ADD when:
+- Creating a new file from scratch.
+- Rewriting the whole `var body` of a SwiftUI view.
+- Replacing the bulk of a view model / service implementation.
+
+DO NOT add when:
+- Fixing typos or renaming symbols.
+- Adding 1–5 lines.
+- Tweaking a single modifier or property.
+
+## Rules
+- Use a real ISO date (today's date), not a placeholder.
+- The user uses `rg "AI-Generated, needs human review"` to track unreviewed files.
+
+## Why
+The developer is learning iOS and explicitly wants to avoid blind "vibe coding".
+This marker is a personal technical-debt tracker, not a security feature.

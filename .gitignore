@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+xcuserdata/
+*.moved-aside
+
+# Swift Package Manager
+# NOTE: Package.resolved is intentionally NOT ignored for app projects.
+# Commit it so dependency versions are reproducible across team/CI.
+# For library packages — add Package.resolved here.
+.swiftpm/
+.build/
+Packages/
+Package.pins
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# IDE
+.idea/
+.vscode/
+
+# Sensitive
+*.env
+.env.local
+Secrets.plist

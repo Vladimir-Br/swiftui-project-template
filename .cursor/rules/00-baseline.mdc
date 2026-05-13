@@ -1,0 +1,29 @@
+---
+description: Project technical baseline — Swift, SwiftUI and iOS versions
+alwaysApply: true
+---
+
+# Project Baseline
+
+## Versions (TODO: adjust per project)
+- iOS deployment target: **iOS 17.0+**
+- Swift language version: **6**
+- Xcode minimum: **16**
+
+## SwiftUI API baseline
+- Use `@Observable` macro for view models. NOT `ObservableObject` + `@Published`.
+- Use `NavigationStack` / `NavigationSplitView`. NOT `NavigationView`.
+- Use `.sheet(item:)`, `.fullScreenCover(item:)` with `Identifiable` payloads.
+- Use SwiftData (`@Model`, `@Query`, `ModelContainer`) for local persistence.
+- Use Swift Concurrency (`async/await`, `actor`, `@MainActor`). Forbidden: GCD, completion handlers in new code.
+
+## Forbidden in this project
+- UIKit imports — only as a last resort via `UIViewRepresentable` for missing SwiftUI capability.
+- Force unwraps (`!`) and force casts (`as!`) — except `@IBOutlet`-style cases and tests.
+- Deprecated APIs from iOS 16 and earlier (e.g., `NavigationView`).
+- The legacy single-parameter `.onChange(of:) { newValue in ... }` — deprecated in iOS 17. Use either the zero-parameter form `.onChange(of:) { /* code */ }` or the two-parameter form `.onChange(of:) { oldValue, newValue in ... }`.
+
+## When uncertain about an API
+- Verify Apple APIs via the `cupertino` MCP — official Apple docs, HIG, Swift Evolution and samples.
+- Use the `context7` MCP only for third-party libraries.
+- Check `swiftui-pro` skill references for deprecation.
